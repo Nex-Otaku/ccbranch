@@ -1,0 +1,25 @@
+{
+  "name": "ccbranch",
+  "version": "0.1.0",
+  "description": "Claude Code status line showing the current git worktree and branch",
+  "type": "module",
+  "bin": {
+    "ccbranch": "./bin/ccbranch.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "release": "node scripts/release.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nex-Otaku/ccbranch.git"
+  }
+}

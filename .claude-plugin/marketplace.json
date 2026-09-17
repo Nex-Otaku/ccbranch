@@ -1,0 +1,15 @@
+{
+  "name": "ccbranch",
+  "owner": {
+    "name": "Nex-Otaku",
+    "url": "https://github.com/Nex-Otaku"
+  },
+  "plugins": [
+    {
+      "name": "ccbranch",
+      "source": "./",
+      "description": "Status line showing the current git worktree and branch, safe for parallel sessions"
+    }
+  ],
+  "description": "Status line plugin: current git worktree and branch"
+}
