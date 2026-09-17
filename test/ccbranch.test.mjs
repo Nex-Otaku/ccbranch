@@ -61,7 +61,7 @@ describe('git dir lookup', () => {
 describe('formatStatusLine', () => {
     it('renders worktree and branch', () => {
         assert.equal(
-            formatStatusLine({ worktree: 'wt', branch: 'dev' }, { color: false }),
+            formatStatusLine({ worktree: 'wt', branch: 'dev' }),
             '\x1b[0m⌂\u00A0wt\u00A0⎇\u00A0dev'
         );
     });
@@ -153,7 +153,7 @@ describe('concurrent sessions', () => {
         for (let round = 0; round < 6; round++) {
             sessions.forEach((session, index) => {
                 const child = execFileAsync(process.execPath, [BIN], {
-                    env: { ...process.env, XDG_CACHE_HOME: sharedCache, NO_COLOR: '1' }
+                    env: { ...process.env, XDG_CACHE_HOME: sharedCache }
                 });
                 child.child.stdin.end(JSON.stringify({ session_id: `session-${index}`, cwd: session.cwd }));
                 runs.push(child.then(({ stdout }) => assert.equal(stdout, `\x1b[0m${session.expected}\n`)));
@@ -201,7 +201,7 @@ describe('status line install', () => {
             shell: true,
             encoding: 'utf8',
             input: JSON.stringify({ session_id: 'install', cwd: path.join(root, 'wt-a') }),
-            env: { ...process.env, XDG_CACHE_HOME: path.join(root, 'install-cache'), NO_COLOR: '1' }
+            env: { ...process.env, XDG_CACHE_HOME: path.join(root, 'install-cache') }
         });
         assert.equal(stdout, '\x1b[0m⌂ wt-a ⎇ feat/wt-a\n');
 

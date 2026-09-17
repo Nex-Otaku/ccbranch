@@ -31,7 +31,8 @@ SessionStart hook re-points that shim at the installed plugin version.
 - Worktree: `main` for the main worktree, otherwise the linked worktree's name
   (the directory name under `.git/worktrees/`).
 - Branch: the checked-out branch, or the short commit sha on a detached HEAD.
-- Nothing is printed outside a git work tree. `NO_COLOR` disables colors.
+- Nothing is printed outside a git work tree.
+- Text uses the terminal's regular foreground color.
 
 ## Documentation
 

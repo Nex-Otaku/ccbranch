@@ -13,7 +13,7 @@ try {
 
 let line = '';
 try {
-    line = formatStatusLine(getGitInfo(data), { color: !process.env.NO_COLOR });
+    line = formatStatusLine(getGitInfo(data));
 } catch {
     // An unreadable directory or .git file leaves the status line empty rather than erroring.
 }

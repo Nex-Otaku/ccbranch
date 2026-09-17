@@ -18,7 +18,6 @@ import {
 
 const WORKTREE_SYMBOL = '⌂';
 const BRANCH_SYMBOL = '⎇';
-const LIGHT_BLUE = '\x1b[38;2;135;206;250m'; // #87CEFA
 const RESET = '\x1b[0m';
 
 /** Looks up { worktree, branch } for the session's cwd, using the session's own cache. */
@@ -58,25 +57,20 @@ export function getGitInfo(data, { cacheDir = getCacheDir(), now = Date.now() } 
     return info;
 }
 
-export function formatStatusLine(info, { color = true } = {}) {
-    if (!info) {
-        return '';
-    }
-
-    const paint = (code, text) => (color ? `${code}${text}${RESET}` : text);
+export function formatStatusLine(info) {
     const parts = [];
-    if (info.worktree) {
-        parts.push(paint(LIGHT_BLUE, `${WORKTREE_SYMBOL} ${info.worktree}`));
+    if (info?.worktree) {
+        parts.push(`${WORKTREE_SYMBOL} ${info.worktree}`);
     }
-    if (info.branch) {
-        parts.push(paint(LIGHT_BLUE, `${BRANCH_SYMBOL} ${info.branch}`));
+    if (info?.branch) {
+        parts.push(`${BRANCH_SYMBOL} ${info.branch}`);
     }
     if (parts.length === 0) {
         return '';
     }
 
     // Claude Code renders status line output dimmed: resetting attributes first
-    // keeps the colors bright. Spaces become U+00A0 so editor terminals that
-    // collapse or trim whitespace keep the layout intact.
+    // shows the text in the terminal's regular foreground color. Spaces become
+    // U+00A0 so editor terminals that collapse or trim whitespace keep the layout.
     return RESET + parts.join(' ').replace(/ /g, ' ');
 }
