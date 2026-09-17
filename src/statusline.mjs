@@ -18,7 +18,7 @@ import {
 
 const WORKTREE_SYMBOL = '⌂';
 const BRANCH_SYMBOL = '⎇';
-const LIGHT_BLUE = '\x1b[96m';
+const LIGHT_BLUE = '\x1b[38;2;135;206;250m'; // #87CEFA
 const RESET = '\x1b[0m';
 
 /** Looks up { worktree, branch } for the session's cwd, using the session's own cache. */
