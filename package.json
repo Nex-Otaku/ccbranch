@@ -1,6 +1,6 @@
 {
   "name": "ccbranch",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Claude Code status line showing the current git worktree and branch",
   "type": "module",
   "bin": {
