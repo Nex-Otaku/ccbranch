@@ -18,8 +18,7 @@ import {
 
 const WORKTREE_SYMBOL = '⌂';
 const BRANCH_SYMBOL = '⎇';
-const BLUE = '\x1b[34m';
-const MAGENTA = '\x1b[35m';
+const LIGHT_BLUE = '\x1b[96m';
 const RESET = '\x1b[0m';
 
 /** Looks up { worktree, branch } for the session's cwd, using the session's own cache. */
@@ -67,10 +66,10 @@ export function formatStatusLine(info, { color = true } = {}) {
     const paint = (code, text) => (color ? `${code}${text}${RESET}` : text);
     const parts = [];
     if (info.worktree) {
-        parts.push(paint(BLUE, `${WORKTREE_SYMBOL} ${info.worktree}`));
+        parts.push(paint(LIGHT_BLUE, `${WORKTREE_SYMBOL} ${info.worktree}`));
     }
     if (info.branch) {
-        parts.push(paint(MAGENTA, `${BRANCH_SYMBOL} ${info.branch}`));
+        parts.push(paint(LIGHT_BLUE, `${BRANCH_SYMBOL} ${info.branch}`));
     }
     if (parts.length === 0) {
         return '';
